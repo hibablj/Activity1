@@ -1,6 +1,6 @@
-package repository;
+package app.repository;
 
-import model.Library;
+import app.model.Library;
 import java.util.List;
 
 public interface LibraryRepository {

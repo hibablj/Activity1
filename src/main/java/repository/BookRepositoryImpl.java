@@ -1,35 +1,30 @@
-package repository;
+package app.repository;
 
-import model.Book;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import app.model.Book;
+import org.springframework.stereotype.Repository;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
+@Repository
 public class BookRepositoryImpl implements BookRepository {
 
     private final List<Book> books = new ArrayList<>();
 
-    public void save(Book book) {
-        books.add(book);
-    }
+    public void save(Book book) { books.add(book); }
 
     public void update(Book book) {
         delete(book.getId());
         books.add(book);
     }
 
-    public void delete(int id) {
-        books.removeIf(b -> b.getId() == id);
-    }
+    public void delete(int id) { books.removeIf(b -> b.getId() == id); }
 
     public Book findById(int id) {
         return books.stream().filter(b -> b.getId() == id).findFirst().orElse(null);
     }
 
-    public long count() {
-        return books.size();
-    }
+    public long count() { return books.size(); }
 
     public List<Book> findAllByOrderByTitle() {
         return books.stream()

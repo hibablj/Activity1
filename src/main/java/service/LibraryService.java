@@ -1,9 +1,12 @@
-package service;
+package app.service;
 
-import model.Library;
-import repository.LibraryRepository;
+import org.springframework.stereotype.Service;
+import app.model.Library;
+import app.repository.LibraryRepository;
+
 import java.util.List;
 
+@Service
 public class LibraryService {
 
     private final LibraryRepository repo;
@@ -17,6 +20,6 @@ public class LibraryService {
     public void delete(int id) { repo.delete(id); }
     public Library findById(int id) { return repo.findById(id); }
     public long count() { return repo.count(); }
-    public List<Library> findAllSorted() { repo.findAllByOrderByName(); return repo.findAllByOrderByName(); }
+    public List<Library> findAllSorted() { return repo.findAllByOrderByName(); }
     public List<Library> findByCity(String city) { return repo.findByCity(city); }
 }
